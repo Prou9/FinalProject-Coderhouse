@@ -17,4 +17,5 @@ public class JumpScareTrigger : MonoBehaviour
             jumpScareObj.SetActive(true);
         }
     }
+    // USAR UN C# EVENT PARA RESOLVER ESTO
 }
