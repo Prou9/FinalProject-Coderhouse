@@ -3,7 +3,7 @@ public class PlayerController : InputController
 {
     [SerializeField] float movementSpeed;
     public AudioSource steps;
-    public Animator anim;
+    private Animator anim;
     void Awake()
     {       
         steps = GetComponent<AudioSource>();

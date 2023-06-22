@@ -7,7 +7,6 @@ public class Timer : MonoBehaviour
     [SerializeField] private int min, sec;
     public static float actualTime;
     public TextMeshProUGUI UITimer;
-
     private void Awake()
     {
         actualTime = (min * 60) + sec;

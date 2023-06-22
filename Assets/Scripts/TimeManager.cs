@@ -5,6 +5,29 @@ using UnityEngine.UI;
 
 public class TimeManager : MonoBehaviour
 {
+    [SerializeField] private GameObject timer;
+    [SerializeField] private GameObject HUDTimer;
+
+    private void Awake()
+    {
+        GameManager.OnGameStateChanged += GameManagerOnGameStateChanged;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.OnGameStateChanged -= GameManagerOnGameStateChanged;
+    }
+    private void GameManagerOnGameStateChanged(GameState state)
+    {
+        if (state == GameState.FindArtifacts)
+        {
+            Debug.Log("ahora a buscar artefactitos y QUE TE CORRE LA NEGRA DALE");
+            timer.SetActive(true);
+            HUDTimer.SetActive(true);
+        }            
+
+    }
+
     public void GetTimer(float actualTime, TextMeshProUGUI UITimer)
     {
         if (actualTime < 1)

@@ -4,25 +4,41 @@ using TMPro;
 using UnityEngine;
 
 public class Door : Interactablee
-{
-    public TextMeshProUGUI messageText;
-    public float messageDuration = 1f;
+{    
+    public Animator anim;
+    public bool unlocked = false;
+
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
     public override void Interact()
     {
-        base.Interact();
-        Debug.Log("pasa por aca despues");
+        base.Interact();       
+        if (!unlocked)
+        {            
+            messageText.text = $"Door locked";
+            messageText.gameObject.SetActive(true);
+        } else
+        {           
+            Debug.Log("pasa por aca despues");
 
-       
-        messageText.text = $"Door opened";
-
-        messageText.gameObject.SetActive(true);
-        transform.Rotate(Vector3.forward * -90);
-        Invoke("HideMessage", messageDuration);
+            messageText.text = $"Door opened";
+            anim.SetBool("opened", true);
+            messageText.gameObject.SetActive(true);
+            GameManager.instance.UpdateGameState(GameState.FindArtifacts);
+        }
+        Invoke(nameof(HideMessage), messageDuration);
     }
 
     private void HideMessage()
     {
         messageText.gameObject.SetActive(false);
+        if (unlocked) Destroy(this);
+    }
+    public void UnlockDoor()
+    {
+        unlocked = true;
     }
 
 }
