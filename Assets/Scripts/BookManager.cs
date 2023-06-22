@@ -1,43 +1,44 @@
 using System.Collections.Generic;
+using System.Reflection;
 using TMPro;
 using UnityEngine;
 
 public class BookManager : MonoBehaviour
 {
-    public static BookManager Instance;  // Referencia estática al script para acceder fácilmente a él
-    public TextMeshProUGUI messageText;
-
-    private List<GameObject> cantidadDeLibros = new List<GameObject>();
+    public TextMeshProUGUI escapeText;
+    [SerializeField] private GameObject collectable;
+    public List<Pickable> bookList = new();
+    private Animator anim;
 
     private void Awake()
     {
-        if (Instance == null)
-            Instance = this;
-        else
-            Destroy(gameObject);
+        GameManager.OnGameStateChanged += GameManagerOnGameStateChanged;
+        anim = escapeText.GetComponent<Animator>();
+
     }
 
-    public void AddBook(GameObject book)
+    private void OnDestroy()
     {
-        cantidadDeLibros.Add(book);
+        GameManager.OnGameStateChanged -= GameManagerOnGameStateChanged;
+    }
+    private void GameManagerOnGameStateChanged(GameState state)
+    {
+        if (state == GameState.FindArtifacts)
+        {
+            collectable.SetActive(true);
+        }
+        if (state == GameState.Escape)
+            anim.SetBool("escape", true);
+            escapeText.gameObject.SetActive(true);
     }
 
-    //public void RemoveBook(GameObject book)
-    //{
-    //    cantidadDeLibros.Remove(book);
-    //}
+    public void AddBook(Pickable book)
+    {
+        bookList.Add(book);
+    }
 
     public int GetBookCount()
     {
-        return cantidadDeLibros.Count;
-    }
-
-    private void Update()
-    {
-        if (GetBookCount() == 4)
-        {
-            messageText.gameObject.SetActive(true);
-
-        }
-    }
+        return bookList.Count;
+    }   
 }
