@@ -3,13 +3,13 @@ using UnityEngine;
 
 public abstract class InputController : MonoBehaviour
 {
-    private float actualRunningTime;
-    private bool canRun;
+    //private float actualRunningTime;
+    //private bool canRun;
     void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        canRun = true;
+        //canRun = true;
     }
     protected Vector2 MoveInput()
     {
@@ -19,27 +19,27 @@ public abstract class InputController : MonoBehaviour
         return new Vector2(moveX, moveY);
     }
 
-    protected bool IsRunning()
-    {
-        if (Input.GetKey(KeyCode.LeftShift) && canRun && actualRunningTime < 3) {
-            actualRunningTime += Time.deltaTime;
-            return true;
+    //protected bool IsRunning()
+    //{
+    //    if (Input.GetKey(KeyCode.LeftShift) && canRun && actualRunningTime < 3) {
+    //        actualRunningTime += Time.deltaTime;
+    //        return true;
             
-        } else
-        {
+    //    } else
+    //    {
             
-            actualRunningTime = 0f;
-            canRun = false;
-            StartCoroutine(WaitSeconds());
-            return false;
-        }       
-    }
+    //        actualRunningTime = 0f;
+    //        canRun = false;
+    //        StartCoroutine(WaitSeconds());
+    //        return false;
+    //    }       
+    //}
 
-    IEnumerator WaitSeconds()
-    {
-        yield return new WaitForSeconds(5f);
-        canRun = true;
-    }
+    //IEnumerator WaitSeconds()
+    //{
+    //    yield return new WaitForSeconds(5f);
+    //    canRun = true;
+    //}
 
     protected Vector2 MouseInput()
     {
