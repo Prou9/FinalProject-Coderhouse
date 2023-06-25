@@ -21,7 +21,6 @@ public class TimeManager : MonoBehaviour
     {
         if (state == GameState.FindArtifacts)
         {
-            Debug.Log("ahora a buscar artefactitos y QUE TE CORRE LA NEGRA DALE");
             timer.SetActive(true);
             HUDTimer.SetActive(true);
         }            

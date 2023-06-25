@@ -16,7 +16,7 @@ public class PlayerRaycast : MonoBehaviour
         itemInfo.gameObject.SetActive(false);
         if (Physics.Raycast(raycastPoint.position, raycastPoint.forward, out RaycastHit hit, maxDistance, layerToCollide))
         {
-            if (hit.collider.TryGetComponent(out Interactablee _)) {
+            if (hit.collider.TryGetComponent(out Interactable _)) {
                 switch (hit.collider.gameObject.layer)
                 {
                     case 10:
@@ -32,8 +32,7 @@ public class PlayerRaycast : MonoBehaviour
                 itemInfo.gameObject.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    Debug.Log("entra aki");
-                    hit.transform.GetComponent<Interactablee>().Interact();
+                    hit.transform.GetComponent<Interactable>().Interact();
                 }
             }
         }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Pickable : Interactablee
+public class Pickable : Interactable
 {   
     public override void Interact()
     {
@@ -24,14 +24,13 @@ public class Pickable : Interactablee
                 gameObject.SetActive(false);
                 break;
         }
-        Invoke("HideMessage", messageDuration);
+        Invoke(nameof(HideMessage), messageDuration);
 
         if (GameManager.instance.GetBookCount() == 6) GameManager.instance.UpdateGameState(GameState.Escape);
     }
     private void HideMessage()
     {
         messageText.gameObject.SetActive(false);
-        //Destroy(gameObject);
         
     }
 

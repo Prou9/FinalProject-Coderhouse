@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Door : Interactablee
+public class Door : Interactable
 {    
     public Animator anim;
     private bool unlocked = false;
@@ -21,9 +21,7 @@ public class Door : Interactablee
             messageText.text = $"Locked";
             messageText.gameObject.SetActive(true);
         } else if (!opened)
-        {           
-            Debug.Log("pasa por aca despues");
-
+        {   
             messageText.text = $"Opened";
             anim.SetBool("opened", true);
             messageText.gameObject.SetActive(true);

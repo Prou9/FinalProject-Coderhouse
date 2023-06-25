@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
         else
         {
             instance = this;
-            //DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject); commented in order to avoid concurrence issues
         }
     }
     private void Start()
@@ -44,59 +44,22 @@ public class GameManager : MonoBehaviour
     public void UpdateGameState(GameState newState)
     {
         state = newState;
-
-        //switch (newState)
-        //{
-        //    case GameState.FindKey:
-        //        HandleFindKey();
-        //        break;
-        //    case GameState.OpenAttic:
-        //        //HandleOpenAttic();
-        //        break;
-        //    case GameState.FindArtifacts:
-        //        //HandleFindArtifacts();
-        //        break;
-        //    case GameState.Escape:
-        //        HandleEscape();
-        //        break;
-        //}
-
         OnGameStateChanged?.Invoke(newState);
 
-    }
-    public void HandleFindKey()
-
-    {
-       //nada
-    }
-
+    } 
     public void HandleOpenAttic(Mission mission)  
     {
         mission.CompleteMission();
-        //enable attic door - se habilita en la clase abstracta interactable
     }
 
     public void HandleFindArtifacts(Mission mission)
     {
-        mission.CompleteMission();
-        //disable mission text 2
-        //enable mission text 3
-        //enable enemy
-        //enable timer
-        //enable HUD
-        //enable collectable books
-
+        mission.CompleteMission();       
     }
 
     public void HandleEscape(Mission mission)
     {
         mission.CompleteMission();
-
-        //RESTA HACER ESCENA DE ESCAPE Y YA ESTARIA TODO PERRO
-        //missionManager.CompleteMission(3);
-        //disable mission text 3
-        //enable escape text
-        //enable entrance door  
     }
 
 

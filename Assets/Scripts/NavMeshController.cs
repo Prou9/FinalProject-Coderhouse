@@ -35,9 +35,7 @@ public class NavMeshController : MonoBehaviour
     }
 
     void Update()
-    {
-        //Search();
-        //Chase();
+    {        
         SearchChaseEvent?.Invoke();
     }
 
