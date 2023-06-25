@@ -24,28 +24,31 @@ public class PlayerController : InputController
             {                
                 steps.Play();
                 //anim.enabled = true;    
-                anim.SetBool("walk", true);
+                //anim.SetBool("walk", true);
+                
             }
         }
         else
         {
             steps.Stop();
             //anim.enabled = false;
-            anim.SetBool("walk", false);
+            //anim.SetBool("walk", false);
         }
 
-        switch (IsRunning())
-        {
-            case true:
-                transform.position += transform.forward * input.y * movementSpeed * 1.5f * Time.deltaTime;
-                transform.position += transform.right * input.x * movementSpeed * 1.5f * Time.deltaTime;
-                break;
-            case false:
-                transform.position += transform.forward * input.y * movementSpeed * Time.deltaTime;
-                transform.position += transform.right * input.x * movementSpeed * Time.deltaTime;
-                break;
-        }
-       
+        transform.position += transform.forward * input.y * movementSpeed * Time.deltaTime;
+        transform.position += transform.right * input.x * movementSpeed * Time.deltaTime;
+
+        //switch (IsRunning())
+        //{
+        //    case true:
+        //        transform.position += transform.forward * input.y * movementSpeed * 1.5f * Time.deltaTime;
+        //        transform.position += transform.right * input.x * movementSpeed * 1.5f * Time.deltaTime;
+        //        break;
+        //    case false:
+        //        transform.position += transform.forward * input.y * movementSpeed * Time.deltaTime;
+        //        transform.position += transform.right * input.x * movementSpeed * Time.deltaTime;
+        //        break;
+        //}               
 
     }
 }

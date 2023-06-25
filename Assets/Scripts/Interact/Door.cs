@@ -6,7 +6,8 @@ using UnityEngine;
 public class Door : Interactablee
 {    
     public Animator anim;
-    public bool unlocked = false;
+    private bool unlocked = false;
+    private bool opened = false;
 
     private void Awake()
     {
@@ -17,15 +18,16 @@ public class Door : Interactablee
         base.Interact();       
         if (!unlocked)
         {            
-            messageText.text = $"Door locked";
+            messageText.text = $"Locked";
             messageText.gameObject.SetActive(true);
-        } else
+        } else if (!opened)
         {           
             Debug.Log("pasa por aca despues");
 
-            messageText.text = $"Door opened";
+            messageText.text = $"Opened";
             anim.SetBool("opened", true);
             messageText.gameObject.SetActive(true);
+            opened = true;
             GameManager.instance.UpdateGameState(GameState.FindArtifacts);
         }
         Invoke(nameof(HideMessage), messageDuration);

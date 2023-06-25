@@ -76,7 +76,7 @@ public class NavMeshController : MonoBehaviour
         return false;
     }
     private void Chase()
-    {
+    { 
 
         if (Physics.Raycast(raycastPoint.position, raycastPoint.forward, out RaycastHit hit, maxDistanceRaycast, layerToCollide))
         {
