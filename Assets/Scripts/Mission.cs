@@ -8,12 +8,8 @@ public class Mission : MonoBehaviour
     public TextMeshProUGUI missionText;
     private int isCompleted;
     public Animator anim;
-
-
     private void Awake()
-    {
-        Debug.Log($"SE ASIGNA EL ANIMATOR");
-
+    {        
         anim = GetComponent<Animator>();
     }
     public int IsCompleted => isCompleted;

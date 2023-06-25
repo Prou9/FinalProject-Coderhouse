@@ -14,9 +14,7 @@ public class BookManager : MonoBehaviour
     {
         GameManager.OnGameStateChanged += GameManagerOnGameStateChanged;
         anim = escapeText.GetComponent<Animator>();
-
     }
-
     private void OnDestroy()
     {
         GameManager.OnGameStateChanged -= GameManagerOnGameStateChanged;
