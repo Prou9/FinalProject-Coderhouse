@@ -15,8 +15,8 @@ public class JumpScareTrigger : MonoBehaviour
     private void Update()
     {
         float distanceToPlayer = Vector3.Distance(enemy.position, target.position);
-        if ((distanceToPlayer <= 3 || Timer.actualTime < 1) && !active)
-        {
+        if ((distanceToPlayer <= 2.70 || Timer.actualTime < 1) && !active)
+        {            
             player.SetActive(false); 
             canvas.SetActive(false);
           
